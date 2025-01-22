@@ -71,8 +71,9 @@ endif
 #	UNIX-specific
 #
 
-PLATFORM_CXXFLAGS = $(SDL2_CFLAGS) -O3
-PLATFORM_LDFLAGS = $(SDL2_LIBS) -lGL -lGLU -lz -lm -lstdc++ -lpthread
+PLATFORM_CXXFLAGS = $(SDL2_CFLAGS) -DSUPERMODEL_UNIX -O3
+PLATFORM_LDFLAGS = $(SDL2_LIBS) -lGL -lGLU -lz -lm -lstdc++ -lpthread -ludev
+
 
 
 ###############################################################################

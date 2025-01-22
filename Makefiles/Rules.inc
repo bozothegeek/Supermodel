@@ -152,6 +152,7 @@ SRC_FILES = \
 	Src/Inputs/InputTypes.cpp \
 	Src/Inputs/MultiInputSource.cpp \
 	Src/OSD/SDL/SDLInputSystem.cpp \
+	Src/OSD/evdev/EvdevInputSystem.cpp \
 	Src/OSD/SDL/Crosshair.cpp \
 	Src/OSD/Outputs.cpp \
 	Src/Sound/MPEG/MpegAudio.cpp \

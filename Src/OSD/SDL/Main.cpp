@@ -59,6 +59,7 @@
  * Compile-Time Options
  * --------------------
  * - SUPERMODEL_WIN32: Define this if compiling on Windows.
+ * - SUPERMODEL_UNIX: Define this if compiling on Unix.
  * - SUPERMODEL_OSX: Define this if compiling on Mac OS X.
  * - SUPERMODEL_DEBUGGER: Enable the debugger.
  * - DEBUG: Debug mode (use with caution, produces large logs of game behavior)
@@ -86,6 +87,9 @@
 #include "OSD/FileSystemPath.h"
 #include "GameLoader.h"
 #include "SDLInputSystem.h"
+#ifdef SUPERMODEL_UNIX
+#include "EvdevInputSystem.h"
+#endif
 #include "SDLIncludes.h"
 #include "Debugger/SupermodelDebugger.h"
 #include "Graphics/Legacy3D/Legacy3D.h"
@@ -2103,6 +2107,10 @@ int main(int argc, char **argv)
   // Create input system
   if (selectedInputSystem == "sdl")
     InputSystem = new CSDLInputSystem(s_runtime_config);
+#ifdef SUPERMODEL_UNIX
+  else if (selectedInputSystem == "evdev")
+    InputSystem = new CEvdevInputSystem(s_runtime_config);
+#endif // SUPERMODEL_UNIX
 #ifdef SUPERMODEL_WIN32
   else if (selectedInputSystem == "dinput")
     InputSystem = new CDirectInputSystem(s_runtime_config, s_window, false, false);
